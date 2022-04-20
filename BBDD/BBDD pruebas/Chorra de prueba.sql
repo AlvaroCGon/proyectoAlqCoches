@@ -1,0 +1,36 @@
+CREATE TABLE Coches(
+Numero_bastidor TINYINT(17),
+Marca VARCHAR(20),
+Modelo VARCHAR(20),
+Precio_alquiler DOUBLE(5,2),
+DNI_cliente VARCHAR(9),
+Telefono_cliente VARCHAR(9),
+CONSTRAINT FK_UsuariosCoches1 FOREIGN KEY (DNI_Cliente) REFERENCES Usuarios(DNI)
+ON UPDATE CASCADE ON DELETE NO ACTION,
+CONSTRAINT FK_UsuariosCoches2 FOREIGN KEY (Telefono_Cliente) REFERENCES Usuarios(Telefono)
+ON UPDATE CASCADE ON DELETE NO ACTION,
+CONSTRAINT PK_Coches PRIMARY KEY (Numero_bastidor)
+);
+
+DESCRIBE Coches;
+
+SHOW CREATE TABLE Coches;
+
+CREATE TABLE Alquiler(
+Id_alquiler INT AUTO_INCREMENT,
+Matricula VARCHAR(7),
+Fecha_salida DATE,
+Fecha_entrada DATE,
+Observaciones VARCHAR(100) NULL,
+DNI_cliente VARCHAR(9),
+Telefono_cliente VARCHAR(9),
+CONSTRAINT FK_UsuariosAlquiler1 FOREIGN KEY (DNI_Cliente) REFERENCES Usuarios(DNI)
+ON UPDATE CASCADE ON DELETE NO ACTION,
+CONSTRAINT FK_UsuariosAlquiler2 FOREIGN KEY (Telefono_Cliente) REFERENCES Usuarios(Telefono)
+ON UPDATE CASCADE ON DELETE NO ACTION,
+CONSTRAINT PK_Alquiler PRIMARY KEY (Id_alquiler)
+);
+
+DESCRIBE Alquiler;
+
+SHOW CREATE TABLE Alquiler;
